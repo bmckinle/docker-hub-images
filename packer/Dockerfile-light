@@ -3,7 +3,7 @@ MAINTAINER "The DevOps Team<bryan.mckinley@pearson.com>"
 
 FROM alpine:3.7
 
-ENV ANSIBLE_VERSION 2.5.0
+ENV ANSIBLE_VERSION 2.4.1
 
 ENV BUILD_PACKAGES \
   bash \
@@ -65,7 +65,7 @@ ENV PYTHONPATH /ansible/lib
 ENV PATH /ansible/bin:$PATH
 ENV ANSIBLE_LIBRARY /ansible/library
 
-WORKDIR /ansible/playbooks
+# WORKDIR /ansible/playbooks
 
 # ENTRYPOINT ["ansible-playbook"]
 # Added above
