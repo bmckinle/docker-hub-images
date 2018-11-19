@@ -1,3 +1,5 @@
+DON'T USE THIS
+
 FROM golang:alpine
 MAINTAINER "The Packer Team <packer@hashicorp.com>"
 

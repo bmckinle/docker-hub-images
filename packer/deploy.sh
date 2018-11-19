@@ -21,13 +21,13 @@ if [[ $version != $dockerfile_version ]]; then
 fi
 
 echo "Building docker images for packer ${version}..."
-docker build -f "${base}/Dockerfile-full" -t hashicorp/packer:full .
-docker build -f "${base}/Dockerfile-light" -t hashicorp/packer:light .
-docker tag hashicorp/packer:light hashicorp/packer:${version}
-docker tag hashicorp/packer:light hashicorp/packer:latest
+# docker build -f "${base}/Dockerfile-full" -t bmckinley/packeransible:full .
+docker build -f "${base}/Dockerfile-light" -t bmckinley/packeransible:light .
+docker tag bmckinley/packeransible:light bmckinley/packeransible:${version}
+docker tag bmckinley/packeransible:light bmckinley/packeransible:latest
 
 echo "Uploading docker images for packer ${version}..."
-docker push hashicorp/packer:${version}
-docker push hashicorp/packer:latest
-docker push hashicorp/packer:light
-docker push hashicorp/packer:full
+docker push bmckinley/packeransible:${version}
+docker push bmckinley/packeransible:latest
+docker push bmckinley/packeransible:light
+docker push bmckinley/packeransible:full
