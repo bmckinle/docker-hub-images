@@ -1,2 +1,2 @@
 FROM golang:onbuild
-MAINTAINER "The Packer Team <packer@hashicorp.com>"
+MAINTAINER "The DevOps Team <bryan.mckinley@pearson.com>"
