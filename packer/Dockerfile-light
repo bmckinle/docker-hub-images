@@ -47,6 +47,14 @@ RUN set -x && \
     echo "==> Installing Ansible..."  && \
     pip install ansible==${ANSIBLE_VERSION} && \
     \
+    echo "==> Installing AWS CLI..."  && \
+    pip install awscli && \
+    \
+    echo "==> Installing AWS CLI..."  && \
+    cd ~/.local/bin && \
+    wget https://github.com/mmmorris1975/aws-runas/releases/download/1.1.1/aws-runas-1.1.1-linux-amd64 && \
+    mv aws-runas-1.1.1-linux-amd64 aws-runas && \
+    \
     echo "==> Cleaning up..."  && \
     apk del build-dependencies && \
     rm -rf /var/cache/apk/* && \
@@ -62,7 +70,7 @@ ENV ANSIBLE_RETRY_FILES_ENABLED false
 ENV ANSIBLE_ROLES_PATH /ansible/playbooks/roles
 ENV ANSIBLE_SSH_PIPELINING True
 ENV PYTHONPATH /ansible/lib
-ENV PATH /ansible/bin:$PATH
+ENV PATH /ansible/bin:~/.local/bin:$PATH
 ENV ANSIBLE_LIBRARY /ansible/library
 
 # ENTRYPOINT ["ansible-playbook"]
@@ -83,4 +91,5 @@ RUN rm -f packer_${PACKER_VERSION}_linux_amd64.zip
 
 WORKDIR /
 
-ENTRYPOINT ["/bin/packer"]
+# ENTRYPOINT ["/bin/packer"]
+CMD ["/bin/bash"]  # interactive for debugging
