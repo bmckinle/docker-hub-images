@@ -1,7 +1,7 @@
 FROM alpine:latest
+# FROM alpine:3.7
+# FROM golang:onbuild # only need for aws-runas in go, which is not used now
 MAINTAINER "The DevOps Team<bryan.mckinley@pearson.com>"
-
-FROM alpine:3.7
 
 ENV ANSIBLE_VERSION 2.4.1
 
@@ -51,9 +51,11 @@ RUN set -x && \
     pip install awscli && \
     \
     echo "==> Installing aws-runas..."  && \
-    cd /usr/local/bin && \
-    wget https://github.com/mmmorris1975/aws-runas/releases/download/1.1.1/aws-runas-1.1.1-linux-amd64 && \
-    mv aws-runas-1.1.1-linux-amd64 aws-runas && \
+    pip install aws-runas && \
+#    cd /usr/local/bin && \
+#    wget https://github.com/mmmorris1975/aws-runas/releases/download/1.1.1/aws-runas-1.1.1-linux-amd64 && \
+#    mv aws-runas-1.1.1-linux-amd64 aws-runas && \
+#    chmod a+x aws-runas && \
     \
     echo "==> Cleaning up..."  && \
     apk del build-dependencies && \
@@ -72,6 +74,7 @@ ENV ANSIBLE_SSH_PIPELINING True
 ENV PYTHONPATH /ansible/lib
 ENV PATH /ansible/bin:~/.local/bin:$PATH
 ENV ANSIBLE_LIBRARY /ansible/library
+ENV USER=root
 
 # ENTRYPOINT ["ansible-playbook"]
 # Added above

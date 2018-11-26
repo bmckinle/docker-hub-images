@@ -22,10 +22,10 @@ the binary from a container. The `latest` tag also points to this version.
 
 You can use this version with the following:
 ```shell
-docker run -i -t hashicorp/packer:light <command>
+docker run -it -v `pwd`/..:/workdir -v $HOME/.aws:/root/.aws -w `pwd` bmckinley/packeransible:light 
 ```
 
-##### `full`
+##### `full`  (DO NOT USE)
 
 The `full` version of this container contains all of the source code found in
 the parent [repository](https://github.com/hashicorp/packer). Using [Google's
