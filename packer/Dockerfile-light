@@ -50,8 +50,8 @@ RUN set -x && \
     echo "==> Installing AWS CLI..."  && \
     pip install awscli && \
     \
-    echo "==> Installing AWS CLI..."  && \
-    cd ~/.local/bin && \
+    echo "==> Installing aws-runas..."  && \
+    cd /usr/local/bin && \
     wget https://github.com/mmmorris1975/aws-runas/releases/download/1.1.1/aws-runas-1.1.1-linux-amd64 && \
     mv aws-runas-1.1.1-linux-amd64 aws-runas && \
     \
