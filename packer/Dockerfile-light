@@ -65,8 +65,6 @@ ENV PYTHONPATH /ansible/lib
 ENV PATH /ansible/bin:$PATH
 ENV ANSIBLE_LIBRARY /ansible/library
 
-# WORKDIR /ansible/playbooks
-
 # ENTRYPOINT ["ansible-playbook"]
 # Added above
 
@@ -83,5 +81,6 @@ RUN sha256sum -cs packer_${PACKER_VERSION}_SHA256SUMS
 RUN unzip packer_${PACKER_VERSION}_linux_amd64.zip -d /bin
 RUN rm -f packer_${PACKER_VERSION}_linux_amd64.zip
 
-# ENTRYPOINT ["/bin/packer"]
-ENTRYPOINT ["/bin/bash"]
+WORKDIR /
+
+ENTRYPOINT ["/bin/packer"]

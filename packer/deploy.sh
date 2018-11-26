@@ -30,4 +30,4 @@ echo "Uploading docker images for packer ${version}..."
 docker push bmckinley/packeransible:${version}
 docker push bmckinley/packeransible:latest
 docker push bmckinley/packeransible:light
-docker push bmckinley/packeransible:full
+# docker push bmckinley/packeransible:full
