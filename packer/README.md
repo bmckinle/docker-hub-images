@@ -22,7 +22,8 @@ the binary from a container. The `latest` tag also points to this version.
 
 You can use this version with the following:
 ```shell
-docker run -it -v `pwd`/..:/workdir -v $HOME/.aws:/root/.aws -w `pwd` bmckinley/packeransible:light 
+# pwd=<workspace>/qglobal-infrastructure/packer
+docker run -it -v `pwd`/..:/workdir -v $HOME/.aws:/root/.aws -w `pwd` bmckinley/packeransible:light
 ```
 
 ##### `full`  (DO NOT USE)
