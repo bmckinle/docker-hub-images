@@ -92,8 +92,15 @@ RUN sha256sum -cs packer_${PACKER_VERSION}_SHA256SUMS
 RUN unzip packer_${PACKER_VERSION}_linux_amd64.zip -d /bin
 RUN rm -f packer_${PACKER_VERSION}_linux_amd64.zip
 
-WORKDIR /workdir/packer
+WORKDIR $INFRA_HOME/packer
 
-# ENTRYPOINT ["/bin/packer"]
-ENTRYPOINT ["/usr/bin/aws-runas"]
-# CMD ["/bin/bash"]  # interactive for debugging
+#
+# Example command
+#
+# docker run -it -v `pwd`/..:/workdir -v $HOME/.aws:/root/.aws -w `pwd` bmckinley/packeransible:light
+# docker run -it -v $INFRA_HOME:/workdir -v $HOME/.aws:/root/.aws -w $INFRA_HOME/packer bmckinley/packeransible:light
+#
+CMD ["/bin/bash"] # debug
+
+#ENTRYPOINT ["/usr/bin/aws-runas"]
+#CMD ["clinical","$@"]
